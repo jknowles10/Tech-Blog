@@ -1,60 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Blog</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <title> Tech Blog </title>
 </head>
-
 <body>
-  <header>
-    <h1> Techie Talk </h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-    <a href="/dashboard"> Dashboard</a>
-  </nav>
-  <main>
-    <aside>
-      <h2>A forum for all things tech!</h2>
-    </aside>
-    <div>
-      {{{body}}}
-      {{#each posts as |post|}}
-      <div>
-        <h3><a href="/posts/{{post._id}}">{{post.title}}</a></h3>
-        <p>{{post.body}}</p>
-        <p>Posted by {{post.author.username}} on {{formatDate post.createdAt}}</p>
-      </div>
-    </div>
-    
-  <div>
-    <h2>Create a New Post</h2>
-    <form id="postForm" action="/posts" method="POST">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
-      <label for="body">Body:</label>
-      <textarea id="body" name="body" required></textarea>
-      <button type="submit" class="btn">Submit</button>
-      {{#if error}}
-      <p class="error">{{error}}</p>
-      {{/if}}
-      
-  </div>
-
-  </main>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+    <header>
+        <nav>
+          <h1> Techie Talk </h1>
+            <button>HOME</button>
+            <button>DASHBOARD</button>
+            {{#unless logged_in }}
+            <button>LOG IN</button>
+            {{else}}
+            <button>LOG OUT</button>
+            {{/unless}}
+        </nav>
+    </header>
+    <main>
+        {{{ body }}}
+    </main>
 </body>
-
 </html>
