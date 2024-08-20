@@ -18,23 +18,33 @@ Post.init(
     allowNull: false,
   },
 
-  author: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-
-  date:  {
-    type: DataTypes.DATE,
-    allownull: false,
+  user_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'users', 
+      key: 'id',
+    },
   },
   
   content: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+
+  created_at: {
+    type: DataTypes.DATE, 
+    allowNull: false, 
+    defaultValue: DataTypes.NOW,
+  },
+  updated_at: {
+    type: DataTypes.DATE, 
+    allowNull: false, 
+    dafaultValue: DataTypes.NOW
+  },
 },
 {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'post',

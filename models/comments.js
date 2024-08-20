@@ -5,7 +5,7 @@ class Comments extends Model {}
 
 Comments.init(
   {
-    comment_id: {
+    id: {
     type: DataTypes.INTEGER,
     allowNull: false, 
     primaryKey: true, 
@@ -17,14 +17,12 @@ Comments.init(
     allowNull: false,
   },
 
-  author: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-
-  date: {
-    type: DataTypes.DATE,
-    allowNull: false,
+  user_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'users', 
+      key: 'id', 
+    },
   },
 
   post_id: {
@@ -33,12 +31,12 @@ Comments.init(
       model: 'post',
       key: 'id',
     },
-    allowNull: false,
   },
 }, 
   {
     sequelize,
     freezeTableName: true,
+    timestamps:true, 
     underscored: true,
     modelName: 'comments',
   } 
