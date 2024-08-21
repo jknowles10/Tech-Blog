@@ -1,10 +1,10 @@
 const withAuth = (req, res, next) => {
-    if (!req.session.logged_in) {
-      res.render('/');
-    } else {
-      next();
-    }
-  };
+  if (!req.session.user_id) {
+    res.render("/login");
+  } else {
+    next();
+  }
+};
   
   module.exports = withAuth;
   
